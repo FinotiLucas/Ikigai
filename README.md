@@ -41,17 +41,17 @@
 
 <p>
 
-<img  src=".assets/screenshots/1.png"  width=265/>
+<img  src="./assets/screenshots/1.png"  width=265/>
 
-<img  src=".assets/screenshots/2.png"  width=265/>
+<img  src="./assets/screenshots/2.png"  width=265/>
 
-<img  src=".assets/screenshots/3.png"  width=265/>
+<img  src="./assets/screenshots/3.png"  width=265/>
 
-<img  src=".assets/screenshots/4.jpeg"  width=265/>
+<img  src="./assets/screenshots/4.png"  width=265/>
 
-<img  src=".assets/screenshots/5.jpeg"  width=265/>
+<img  src="./assets/screenshots/5.png"  width=265/>
 
-<img  src=".assets/screenshots/6.jpeg"  width=265/>
+<img  src="./assets/screenshots/6.png"  width=265/>
 
 </p>
 
