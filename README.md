@@ -1,5 +1,5 @@
 
-# All Nihon
+# Ikigai - Anime and Manga encyclopedia
   
   
 
@@ -31,7 +31,7 @@
 
 ### :muscle: Project
 
-<b>All Nihon</b> It is an application that serves as a way to organize the most important information about your favorite anime / manga, in addition to making you discover much more content
+<b>Ikigai</b> It is an application that serves as a way to organize the most important information about your favorite anime / manga, in addition to making you discover much more content
 
 
 
