@@ -8,7 +8,7 @@
 
 <img  src="https://wallup.net/wp-content/uploads/2016/01/98590-minimalism-Nippon-origami-digital_art-waves-Japan-birds-Nihon.jpg"/><br> 
 
-<b>Descomplicando os Correios!</b> 
+<b></b> 
 
 </h4> 
 
@@ -29,7 +29,7 @@
 
 
 
-### :muscle: Projeto
+### :muscle: Project
 
 <b>All Nihon</b> It is an application that serves as a way to organize the most important information about your favorite anime / manga, in addition to making you discover much more content
 
