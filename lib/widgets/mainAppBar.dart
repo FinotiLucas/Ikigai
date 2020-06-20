@@ -1,4 +1,4 @@
-import 'package:allnihon/screens/search/Search.dart';
+import 'package:ikigai/screens/search/Search.dart';
 import 'package:flutter/material.dart';
 import 'package:mdi/mdi.dart';
 

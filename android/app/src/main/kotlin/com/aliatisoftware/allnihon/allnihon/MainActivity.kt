@@ -1,4 +1,4 @@
-package com.aliatisoftware.allnihon.allnihon
+package com.aliatisoftware.ikigai
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -1,4 +1,4 @@
-import 'package:allnihon/classes/anime.dart';
+/*import 'package:ikigai/classes/anime.dart';
 
 List animes = [
   Anime(
@@ -95,3 +95,4 @@ List animes = [
   ),
 ];
 //Highschool of the Dead
+*/

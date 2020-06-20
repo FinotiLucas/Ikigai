@@ -1,7 +1,7 @@
-import 'package:allnihon/screens/description/characterDetails.dart';
+import 'package:ikigai/controllers/descriptionController.dart';
+import 'package:ikigai/screens/description/characterDetails.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:jikan_api/jikan_api.dart';
 
 class CharactersPage extends StatefulWidget {
   CharactersPage({Key key, this.animeId, this.option}) : super(key: key);
@@ -13,15 +13,14 @@ class CharactersPage extends StatefulWidget {
 }
 
 class _CharactersPageState extends State<CharactersPage> {
-  Future getCharacters(animeId, option) async {
-    var jikan = Jikan();
-    if (option == 1) {
-      var anime = await jikan.getAnimeCharactersStaff(animeId);
-      return anime.characters;
-    } else {
-      var manga = await jikan.getMangaCharacters(animeId);
-      return manga;
-    }
+
+  Future _future;
+
+  @override
+  void initState() { 
+    _future = getCharacters(widget.animeId, widget.option);
+    super.initState();
+    
   }
 
   _buildListTitle(String leading, String title, String subtitle, int id) {
@@ -71,7 +70,7 @@ class _CharactersPageState extends State<CharactersPage> {
 
   futureBuilder() {
     return new FutureBuilder(
-      future: getCharacters(widget.animeId, widget.option),
+      future: _future,
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
           return ListView.builder(

@@ -1,6 +1,6 @@
-import 'package:allnihon/widgets/myGridView.dart';
+import 'package:ikigai/controllers/indicationsController.dart';
+import 'package:ikigai/widgets/myGridView.dart';
 import 'package:flutter/material.dart';
-import 'package:jikan_api/jikan_api.dart';
 import 'package:mdi/mdi.dart';
 
 class IndicationsPage extends StatefulWidget {
@@ -12,19 +12,6 @@ class IndicationsPage extends StatefulWidget {
 
 class _IndicationsPageState extends State<IndicationsPage> {
   Future _future;
-  int option = 1;
-  Future getTopAnime() async {
-    var jikan = Jikan();
-    var top = await jikan.getTop(TopType.anime, subtype: TopSubtype.airing);
-    return top;
-  }
-
-  Future getTopMangas() async {
-    var jikan = Jikan();
-    var top =
-        await jikan.getTop(TopType.manga, subtype: TopSubtype.bypopularity);
-    return top;
-  }
 
   @override
   void initState() {

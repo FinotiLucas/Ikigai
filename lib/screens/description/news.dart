@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:jikan_api/jikan_api.dart';
+import 'package:ikigai/controllers/descriptionController.dart';
 
 class NewsPage extends StatefulWidget {
   NewsPage({Key key, this.animeId, this.option}) : super(key: key);
@@ -12,15 +12,12 @@ class NewsPage extends StatefulWidget {
 }
 
 class _NewsPageState extends State<NewsPage> {
-  Future getCharacters(animeId, option) async {
-    var jikan = Jikan();
-    if (option == 1) {
-      var anime = await jikan.getAnimeNews(animeId);
-      return anime;
-    } else {
-      var manga = await jikan.getMangaNews(animeId);
-      return manga;
-    }
+  Future _future;
+
+  @override
+  void initState() {
+    _future = getNews(widget.animeId, widget.option);
+    super.initState();
   }
 
   _buildListTitle(String leading, String title, String subtitle) {
@@ -74,7 +71,7 @@ class _NewsPageState extends State<NewsPage> {
 
   futureBuilder() {
     return new FutureBuilder(
-      future: getCharacters(widget.animeId, widget.option),
+      future: _future,
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
           return ListView.builder(

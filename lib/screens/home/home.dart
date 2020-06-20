@@ -1,5 +1,5 @@
-import 'package:allnihon/screens/description/description.dart';
-import 'package:allnihon/utils/animeList.dart';
+/*import 'package:ikigai/screens/description/description.dart';
+import 'package:ikigai/utils/animeList.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
@@ -91,3 +91,4 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+*/

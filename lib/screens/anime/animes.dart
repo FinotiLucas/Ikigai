@@ -1,8 +1,8 @@
-import 'package:allnihon/widgets/mainAppBar.dart';
-import 'package:allnihon/widgets/myGridView.dart';
+import 'package:ikigai/widgets/mainAppBar.dart';
+import 'package:ikigai/widgets/myGridView.dart';
 import 'package:flutter/material.dart';
 import 'package:jikan_api/jikan_api.dart';
-import 'package:allnihon/utils/string_extension.dart';
+import 'package:ikigai/utils/string_extension.dart';
 
 class AnimesListPage extends StatefulWidget {
   AnimesListPage({Key key, this.genre, this.categorie}) : super(key: key);

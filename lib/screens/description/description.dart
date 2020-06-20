@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:ikigai/controllers/descriptionController.dart';
 import 'package:jikan_api/jikan_api.dart';
 import 'package:mdi/mdi.dart';
 
@@ -21,19 +22,12 @@ class AnimesDescriptionState extends State<AnimesDescription> {
 
   String title;
 
+  Future _future;
+
   @override
   void initState() {
-    //widget.img
-    //"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fvignette.wikia.nocookie.net%2Ffategrandorder%2Fimages%2F1%2F1d%2FError404.png%2Frevision%2Flatest%3Fcb%3D20170204102207&f=1&nofb=1"
+    _future = getInfo(widget.anime.malId, widget.option);
     super.initState();
-  }
-
-  Future getTop(animeId, option) async {
-    var jikan = Jikan();
-    var top = option == 1
-        ? await jikan.getAnimeInfo(animeId)
-        : await jikan.getMangaInfo(animeId);
-    return top;
   }
 
   animeImage(animeInfo) {
@@ -196,7 +190,7 @@ class AnimesDescriptionState extends State<AnimesDescription> {
 
   futureBuilder() {
     return new FutureBuilder(
-      future: getTop(widget.anime.malId, widget.option),
+      future: _future,
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
           return body(snapshot.data);

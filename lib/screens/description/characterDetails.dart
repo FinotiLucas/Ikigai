@@ -1,8 +1,8 @@
-import 'package:allnihon/widgets/mainAppBar.dart';
+import 'package:ikigai/controllers/descriptionController.dart';
+import 'package:ikigai/widgets/mainAppBar.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:jikan_api/jikan_api.dart';
-import 'package:allnihon/utils/string_extension.dart';
+import 'package:ikigai/utils/string_extension.dart';
 
 class CharacterDetails extends StatefulWidget {
   CharacterDetails(
@@ -25,17 +25,12 @@ class CharacterDetailsState extends State<CharacterDetails> {
   double _width;
   double radius = 30;
 
+  Future _future;
+
   @override
   void initState() {
-    //widget.img
-    //"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fvignette.wikia.nocookie.net%2Ffategrandorder%2Fimages%2F1%2F1d%2FError404.png%2Frevision%2Flatest%3Fcb%3D20170204102207&f=1&nofb=1"
+    _future = getCharactersDetails(widget.id);
     super.initState();
-  }
-
-  Future getCharactersDetails(characterId) async {
-    var jikan = Jikan();
-    var character = await jikan.getCharacterInfo(characterId);
-    return character;
   }
 
   Future setAppBarTitle(character) {
@@ -136,7 +131,7 @@ class CharacterDetailsState extends State<CharacterDetails> {
 
   futureBuilder() {
     return new FutureBuilder(
-      future: getCharactersDetails(widget.id),
+      future: _future,
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
           return body(snapshot.data);

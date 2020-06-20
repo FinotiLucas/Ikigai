@@ -1,7 +1,7 @@
-import 'package:allnihon/screens/anime/animeCategories.dart';
-import 'package:allnihon/screens/indications/indications.dart';
-import 'package:allnihon/screens/manga/mangaCategories.dart';
-import 'package:allnihon/widgets/mainAppBar.dart';
+import 'package:ikigai/screens/anime/animeCategories.dart';
+import 'package:ikigai/screens/indications/indications.dart';
+import 'package:ikigai/screens/manga/mangaCategories.dart';
+import 'package:ikigai/widgets/mainAppBar.dart';
 import 'package:flutter/material.dart';
 
 class MainPage extends StatefulWidget {
@@ -70,7 +70,7 @@ class _MainPageState extends State<MainPage> {
       length: 3,
       child: Scaffold(
         key: _scaffoldKey,
-        appBar: mainAppBar(context, "All Nihon"),
+        appBar: mainAppBar(context, "Ikigai"),
         body: body(),
         //drawer: DrawerView(),
       ),

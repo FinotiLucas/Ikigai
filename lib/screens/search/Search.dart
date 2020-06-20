@@ -1,6 +1,6 @@
-import 'package:allnihon/widgets/myGridView.dart';
+import 'package:ikigai/controllers/searchController.dart';
+import 'package:ikigai/widgets/myGridView.dart';
 import 'package:flutter/material.dart';
-import 'package:jikan_api/jikan_api.dart';
 import 'package:mdi/mdi.dart';
 
 class SearchPage extends StatefulWidget {
@@ -22,24 +22,6 @@ class _SearchPageState extends State<SearchPage> {
     super.initState();
   }
 
-  Future getAnimeSearch(String query) async {
-    var jikan = Jikan();
-    var top = await jikan.search(query, SearchType.anime);
-    return top;
-  }
-
-  Future getMangaSearch(String query) async {
-    var jikan = Jikan();
-    var top = await jikan.search(query, SearchType.manga);
-    return top;
-  }
-
-  Future getCharacterSearch(String query) async {
-    var jikan = Jikan();
-    var top = await jikan.search(query, SearchType.character);
-    return top;
-  }
-
   body() {
     return new Column(
       children: <Widget>[
@@ -53,7 +35,8 @@ class _SearchPageState extends State<SearchPage> {
                 title: new TextField(
                   controller: controller,
                   decoration: new InputDecoration(
-                      hintText: 'Pesquisar', border: InputBorder.none),
+                      hintText: 'Search for a anime, manga or character',
+                      border: InputBorder.none),
                 ),
                 trailing: new IconButton(
                   icon: new Icon(Icons.done),
@@ -83,7 +66,8 @@ class _SearchPageState extends State<SearchPage> {
               FlatButton.icon(
                 color: Theme.of(context).primaryColor,
                 icon: Icon(Mdi.televisionClassic, color: Colors.white),
-                label: Text('Animes', style: TextStyle(color: Colors.white)),
+                label: Text('Search for Animes',
+                    style: TextStyle(color: Colors.white)),
                 onPressed: () {
                   setState(() {
                     type = 1;
@@ -94,7 +78,8 @@ class _SearchPageState extends State<SearchPage> {
               FlatButton.icon(
                 color: Theme.of(context).primaryColor,
                 icon: Icon(Mdi.bookOpen, color: Colors.white),
-                label: Text('Mangas', style: TextStyle(color: Colors.white)),
+                label: Text('Search for Mangas',
+                    style: TextStyle(color: Colors.white)),
                 onPressed: () {
                   setState(() {
                     type = 2;
@@ -118,11 +103,26 @@ class _SearchPageState extends State<SearchPage> {
           ),
         ),
         _search == null
-            ? Container()
+            ? noSearchImage()
             : Expanded(
                 child: futureBuilder(),
               ),
       ],
+    );
+  }
+
+  noSearchImage() {
+    return Flexible(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: <Widget>[
+          SizedBox(
+            child: Image.asset(
+              'assets/images/seach.jpg',
+            ),
+          ),
+        ],
+      ),
     );
   }
 
@@ -144,8 +144,9 @@ class _SearchPageState extends State<SearchPage> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+      resizeToAvoidBottomInset : false,
       appBar: new AppBar(
-        title: new Text('Pesquisa'),
+        title: new Text('Search'),
         elevation: 0.0,
       ),
       body: body(),

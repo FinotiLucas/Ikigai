@@ -1,6 +1,6 @@
-import 'package:allnihon/screens/anime/animes.dart';
-import 'package:allnihon/utils/genreLists.dart';
-import 'package:allnihon/utils/string_extension.dart';
+import 'package:ikigai/screens/anime/animes.dart';
+import 'package:ikigai/utils/genreLists.dart';
+import 'package:ikigai/utils/string_extension.dart';
 import 'package:flutter/material.dart';
 
 class AnimesCategoriesPage extends StatefulWidget {

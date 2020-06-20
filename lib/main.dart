@@ -1,4 +1,4 @@
-import 'package:allnihon/screens/mainScreen/mainScreen.dart';
+import 'package:ikigai/screens/mainScreen/mainScreen.dart';
 import 'package:flutter/material.dart';
 
 void main() {

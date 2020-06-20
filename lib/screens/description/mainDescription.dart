@@ -1,8 +1,8 @@
-import 'package:allnihon/screens/description/characters.dart';
-import 'package:allnihon/screens/description/description.dart';
-import 'package:allnihon/screens/description/news.dart';
-import 'package:allnihon/screens/description/reviews.dart';
-import 'package:allnihon/widgets/mainAppBar.dart';
+import 'package:ikigai/screens/description/characters.dart';
+import 'package:ikigai/screens/description/description.dart';
+import 'package:ikigai/screens/description/news.dart';
+import 'package:ikigai/screens/description/reviews.dart';
+import 'package:ikigai/widgets/mainAppBar.dart';
 import 'package:flutter/material.dart';
 
 class MainDescriptionPage extends StatefulWidget {

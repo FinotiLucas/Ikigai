@@ -1,7 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:expand_widget/expand_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:jikan_api/jikan_api.dart';
-import 'package:allnihon/utils/string_extension.dart';
+import 'package:ikigai/controllers/descriptionController.dart';
+import 'package:ikigai/utils/string_extension.dart';
 
 class ReviewsPage extends StatefulWidget {
   ReviewsPage({Key key, this.animeId, this.option}) : super(key: key);
@@ -13,15 +14,12 @@ class ReviewsPage extends StatefulWidget {
 }
 
 class _ReviewsPageState extends State<ReviewsPage> {
-  Future getCharacters(animeId, option) async {
-    var jikan = Jikan();
-    if (option == 1) {
-      var anime = await jikan.getAnimeReviews(animeId);
-      return anime;
-    } else {
-      var manga = await jikan.getMangaReviews(animeId);
-      return manga;
-    }
+  Future _future;
+
+  @override
+  void initState() {
+    _future = getReviews(widget.animeId, widget.option);
+    super.initState();
   }
 
   _buildListTitle(String leading, String title, String subtitle) {
@@ -56,13 +54,15 @@ class _ReviewsPageState extends State<ReviewsPage> {
           ),
           textAlign: TextAlign.justify,
         ),
-        subtitle: Text(
+        subtitle: ExpandText(
           subtitle.toString().removebl(),
           style: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w500,
           ),
           textAlign: TextAlign.justify,
+          expandOnGesture: false,
+          hideArrowOnExpanded: true,
         ),
         /*onTap: () async {
           var jikan = Jikan();
@@ -75,7 +75,7 @@ class _ReviewsPageState extends State<ReviewsPage> {
 
   futureBuilder() {
     return new FutureBuilder(
-      future: getCharacters(widget.animeId, widget.option),
+      future: _future,
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
           return ListView.builder(
