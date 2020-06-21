@@ -1,6 +1,12 @@
 import 'package:jikan_api/jikan_api.dart';
 
-int option = 1;
+Future<Iterable> fetchIndications() async {
+  return await Future.wait([
+    getTopAnime(),
+    getTopMangas(),
+  ]);
+}
+
 Future getTopAnime() async {
   var jikan = Jikan();
   var top = await jikan.getTop(TopType.anime, subtype: TopSubtype.airing);

@@ -3,6 +3,6 @@ extension StringExtension on String {
     return "${this[0].toUpperCase()}${this.substring(1)}";
   }
   String removebl(){
-    return "${this.replaceAll('\\n', '')}";
+    return "${this.replaceAll('\\n', '\n')}";
   }
 }

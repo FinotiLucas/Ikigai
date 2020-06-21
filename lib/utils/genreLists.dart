@@ -17,7 +17,7 @@ List categoriesList = [
     "horror",
     "kids",
     "magic",
-    "martialArts",
+    "martial Arts",
     "mecha",
     "music",
     "parody",
@@ -26,17 +26,17 @@ List categoriesList = [
     "school",
     "sciFi",
     "shoujo",
-    "shoujoAi",
+    "shoujo Ai",
     "shounen",
     "shounenAi",
     "space",
     "sports",
-    "superPower",
+    "super Power",
     "vampire",
     "yaoi",
     "yuri",
     "harem",
-    "sliceOfLife",
+    "slice of Life",
     "supernatural",
     "military",
     "police",
@@ -45,7 +45,7 @@ List categoriesList = [
     "seinen",
     "josei",
     "doujinshi",
-    "genderBender"
+    "gender bender"
   ];
 
   List genres = [

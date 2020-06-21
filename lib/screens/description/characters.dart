@@ -1,26 +1,19 @@
-import 'package:ikigai/controllers/descriptionController.dart';
 import 'package:ikigai/screens/description/characterDetails.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class CharactersPage extends StatefulWidget {
-  CharactersPage({Key key, this.animeId, this.option}) : super(key: key);
+  CharactersPage({Key key, this.anime}) : super(key: key);
 
-  final animeId;
-  final int option;
+  final anime;
   @override
   _CharactersPageState createState() => _CharactersPageState();
 }
 
 class _CharactersPageState extends State<CharactersPage> {
-
-  Future _future;
-
   @override
-  void initState() { 
-    _future = getCharacters(widget.animeId, widget.option);
+  void initState() {
     super.initState();
-    
   }
 
   _buildListTitle(String leading, String title, String subtitle, int id) {
@@ -60,7 +53,7 @@ class _CharactersPageState extends State<CharactersPage> {
               hero: leading + title,
               id: id,
               image: leading,
-              name:title,
+              name: title,
             ),
           ),
         );
@@ -68,34 +61,23 @@ class _CharactersPageState extends State<CharactersPage> {
     );
   }
 
-  futureBuilder() {
-    return new FutureBuilder(
-      future: _future,
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.done) {
-          return ListView.builder(
-            physics: BouncingScrollPhysics(),
-            itemCount: snapshot.data.length,
-            itemBuilder: (context, index) {
-              return _buildListTitle(
-                snapshot.data[index].imageUrl,
-                snapshot.data[index].name,
-                snapshot.data[index].role,
-                snapshot.data[index].malId,
-              );
-            },
-          );
-        } else {
-          return Center(
-            child: CircularProgressIndicator(),
-          );
-        }
+  body() {
+    return ListView.builder(
+      physics: BouncingScrollPhysics(),
+      itemCount: widget.anime.length,
+      itemBuilder: (context, index) {
+        return _buildListTitle(
+          widget.anime[index].imageUrl,
+          widget.anime[index].name,
+          widget.anime[index].role,
+          widget.anime[index].malId,
+        );
       },
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    return futureBuilder();
+    return body();
   }
 }

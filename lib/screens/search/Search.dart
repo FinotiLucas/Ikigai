@@ -43,13 +43,7 @@ class _SearchPageState extends State<SearchPage> {
                   onPressed: () async {
                     setState(() {
                       _search = controller.text;
-                      if (type == 1) {
-                        _future = getAnimeSearch(controller.text);
-                      } else if (type == 2) {
-                        _future = getMangaSearch(controller.text);
-                      } else {
-                        _future = getCharacterSearch(controller.text);
-                      }
+                      _future = fetchSearch(controller.text);
                     });
                   },
                 ),
@@ -71,7 +65,6 @@ class _SearchPageState extends State<SearchPage> {
                 onPressed: () {
                   setState(() {
                     type = 1;
-                    _future = getAnimeSearch(controller.text);
                   });
                 },
               ),
@@ -83,7 +76,6 @@ class _SearchPageState extends State<SearchPage> {
                 onPressed: () {
                   setState(() {
                     type = 2;
-                    _future = getMangaSearch(controller.text);
                   });
                 },
               ),
@@ -131,7 +123,9 @@ class _SearchPageState extends State<SearchPage> {
       future: _future,
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
-          return myGridView(snapshot.data, 1);
+          return type == 1
+              ? myGridView(snapshot.data[0], type)
+              : myGridView(snapshot.data[1], type);
         } else {
           return Center(
             child: CircularProgressIndicator(),
@@ -144,7 +138,7 @@ class _SearchPageState extends State<SearchPage> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      resizeToAvoidBottomInset : false,
+      resizeToAvoidBottomInset: false,
       appBar: new AppBar(
         title: new Text('Search'),
         elevation: 0.0,

@@ -1,21 +1,20 @@
-import 'package:ikigai/controllers/indicationsController.dart';
 import 'package:ikigai/widgets/myGridView.dart';
 import 'package:flutter/material.dart';
 import 'package:mdi/mdi.dart';
 
 class IndicationsPage extends StatefulWidget {
-  IndicationsPage({Key key}) : super(key: key);
+  IndicationsPage({Key key, this.data}) : super(key: key);
 
+  final data;
   @override
   _IndicationsPageState createState() => _IndicationsPageState();
 }
 
 class _IndicationsPageState extends State<IndicationsPage> {
-  Future _future;
+  int option = 1;
 
   @override
   void initState() {
-    _future = getTopAnime();
     super.initState();
   }
 
@@ -36,7 +35,7 @@ class _IndicationsPageState extends State<IndicationsPage> {
                 onPressed: () {
                   setState(() {
                     option = 1;
-                    _future = getTopAnime();
+                    //_future = getTopAnime();
                   });
                 },
               ),
@@ -48,7 +47,7 @@ class _IndicationsPageState extends State<IndicationsPage> {
                 onPressed: () {
                   setState(() {
                     option = 2;
-                    _future = getTopMangas();
+                    //_future = getTopMangas();
                   });
                 },
               ),
@@ -56,18 +55,9 @@ class _IndicationsPageState extends State<IndicationsPage> {
           ),
         ),
         Expanded(
-          child: FutureBuilder(
-            future: _future,
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.done) {
-                return myGridView(snapshot.data, option);
-              } else {
-                return Center(
-                  child: CircularProgressIndicator(),
-                );
-              }
-            },
-          ),
+          child: option == 1
+              ? myGridView(widget.data[0], option)
+              : myGridView(widget.data[1], option),
         ),
       ],
     );

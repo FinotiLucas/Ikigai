@@ -1,14 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:ikigai/controllers/descriptionController.dart';
-import 'package:jikan_api/jikan_api.dart';
 import 'package:mdi/mdi.dart';
 
 class AnimesDescription extends StatefulWidget {
-  AnimesDescription({Key key, this.anime, this.option}) : super(key: key);
+  AnimesDescription({Key key, this.heroTag, this.anime}) : super(key: key);
 
+  final String heroTag;
   final anime;
-  final int option;
 
   @override
   AnimesDescriptionState createState() => AnimesDescriptionState();
@@ -22,11 +20,9 @@ class AnimesDescriptionState extends State<AnimesDescription> {
 
   String title;
 
-  Future _future;
-
   @override
   void initState() {
-    _future = getInfo(widget.anime.malId, widget.option);
+    //_future = getInfo(widget.anime.malId, widget.option);
     super.initState();
   }
 
@@ -35,7 +31,7 @@ class AnimesDescriptionState extends State<AnimesDescription> {
       width: _width,
       height: _height * 0.65,
       child: Hero(
-        tag: widget.anime.title + widget.anime.imageUrl,
+        tag: widget.heroTag,
         child: CachedNetworkImage(
           imageUrl: animeInfo.imageUrl,
           imageBuilder: (context, imageProvider) => Container(
@@ -176,30 +172,10 @@ class AnimesDescriptionState extends State<AnimesDescription> {
 
   floatingActionButton() {
     return FloatingActionButton(
-      onPressed: () async {
-        var jikan = Jikan();
-        var top = await jikan.getAnimeCharactersStaff(widget.anime.malId);
-        print(top.characters);
-        return top;
-      },
+      onPressed: () async {},
       tooltip: 'Adcionar um novo anime ou Manga',
       backgroundColor: Theme.of(context).primaryColor,
       child: Icon(Icons.add),
-    );
-  }
-
-  futureBuilder() {
-    return new FutureBuilder(
-      future: _future,
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.done) {
-          return body(snapshot.data);
-        } else {
-          return Center(
-            child: CircularProgressIndicator(),
-          );
-        }
-      },
     );
   }
 
@@ -208,7 +184,7 @@ class AnimesDescriptionState extends State<AnimesDescription> {
     _height = MediaQuery.of(context).size.height;
     _width = MediaQuery.of(context).size.width;
     return Scaffold(
-      body: futureBuilder(),
+      body: body(widget.anime),
       floatingActionButton: floatingActionButton(),
     );
   }

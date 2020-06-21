@@ -63,14 +63,14 @@ class _DrawerViewState extends State<DrawerView> {
         children: <Widget>[
           ListTile(
             title: Text(
-              "Faça o seu login",
+              "Please login",
               style: TextStyle(
                   color: Colors.white,
                   fontSize: 16,
                   fontWeight: FontWeight.bold),
             ),
             subtitle: Text(
-              "ou cadastre-se",
+              "or sign up",
               style: TextStyle(
                 color: Color.fromRGBO(255, 249, 244, 0.8),
               ),
@@ -96,17 +96,16 @@ class _DrawerViewState extends State<DrawerView> {
         padding: EdgeInsets.zero,
         children: <Widget>[
           drawerHeader(),
-          listTitle("favoritos", true, Icon(Mdi.cardsHeart), null),
-          listTitle("News", true, Icon(Mdi.cardsHeart), null),
-          listTitle("Personagens", true, Icon(Mdi.cardsHeart), null),
-          listTitle("Season", true, Icon(Mdi.cardsHeart), null),
-          listTitle("Schedule", true, Icon(Mdi.cardsHeart), null),
-          listTitle("Magazine", true, Icon(Mdi.cardsHeart), null),
+          //listTitle("favorites", true, Icon(Mdi.cardsHeart), null),
+          listTitle("Season", true, Icon(Mdi.clipboardTextPlay), null),
+          listTitle("Schedule", true, Icon(Mdi.clockTimeSeven), null),
+          listTitle("Magazine", true, Icon(Mdi.newspaperVariant), null),
           Divider(
             height: 10,
             thickness: 2,
           ),
-          listTitle("sobre o app", false, Text(""), null),
+          listTitle("Share us with your friends", true, Icon(Mdi.share), null),
+          listTitle("About", true, Icon(Mdi.information), null),
         ],
       ),
     );

@@ -1,6 +1,8 @@
+import 'package:ikigai/controllers/indicationsController.dart';
 import 'package:ikigai/screens/anime/animeCategories.dart';
 import 'package:ikigai/screens/indications/indications.dart';
 import 'package:ikigai/screens/manga/mangaCategories.dart';
+import 'package:ikigai/widgets/drawer.dart';
 import 'package:ikigai/widgets/mainAppBar.dart';
 import 'package:flutter/material.dart';
 
@@ -16,9 +18,11 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   final GlobalKey<ScaffoldState> _scaffoldKey =
       new GlobalKey<ScaffoldState>(); // Para o Drawer
+  Future _future;
 
   @override
   void initState() {
+    _future = fetchIndications();
     super.initState();
   }
 
@@ -31,7 +35,7 @@ class _MainPageState extends State<MainPage> {
     );
   }
 
-  body() {
+  body(data) {
     return Column(
       children: <Widget>[
         Container(
@@ -42,7 +46,7 @@ class _MainPageState extends State<MainPage> {
             indicatorColor: Colors.white,
             //indicatorColor: transparency,
             tabs: <Widget>[
-              //_buildTab("Início"),
+              _buildTab("Home"),
               _buildTab("Indications"),
               _buildTab("Animes"),
               _buildTab("Mangas"),
@@ -53,8 +57,10 @@ class _MainPageState extends State<MainPage> {
           flex: 3,
           child: TabBarView(
             children: [
-              //Container(),
-              IndicationsPage(),
+              Container(),
+              IndicationsPage(
+                data: data,
+              ),
               AnimesCategoriesPage(),
               MangasCategoriesPage(),
             ],
@@ -64,16 +70,33 @@ class _MainPageState extends State<MainPage> {
     );
   }
 
+  futureBuilder() {
+    return FutureBuilder(
+      future: _future,
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.done) {
+          return DefaultTabController(
+            length: 4,
+            child: Scaffold(
+              key: _scaffoldKey,
+              appBar: mainAppBar(context, "Ikigai"),
+              body: body(snapshot.data),
+              drawer: DrawerView(),
+            ),
+          );
+        } else {
+          return Scaffold(
+            body: Center(
+              child: CircularProgressIndicator(),
+            ),
+          );
+        }
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 3,
-      child: Scaffold(
-        key: _scaffoldKey,
-        appBar: mainAppBar(context, "Ikigai"),
-        body: body(),
-        //drawer: DrawerView(),
-      ),
-    );
+    return futureBuilder();
   }
 }

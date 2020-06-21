@@ -1,22 +1,18 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:ikigai/controllers/descriptionController.dart';
 
 class NewsPage extends StatefulWidget {
-  NewsPage({Key key, this.animeId, this.option}) : super(key: key);
+  NewsPage({Key key, this.anime}) : super(key: key);
 
-  final animeId;
-  final int option;
+  final anime;
+
   @override
   _NewsPageState createState() => _NewsPageState();
 }
 
 class _NewsPageState extends State<NewsPage> {
-  Future _future;
-
   @override
   void initState() {
-    _future = getNews(widget.animeId, widget.option);
     super.initState();
   }
 
@@ -69,33 +65,22 @@ class _NewsPageState extends State<NewsPage> {
     );
   }
 
-  futureBuilder() {
-    return new FutureBuilder(
-      future: _future,
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.done) {
-          return ListView.builder(
-            physics: BouncingScrollPhysics(),
-            itemCount: snapshot.data.length,
-            itemBuilder: (context, index) {
-              return _buildListTitle(
-                snapshot.data[index].imageUrl,
-                snapshot.data[index].title,
-                snapshot.data[index].date,
-              );
-            },
-          );
-        } else {
-          return Center(
-            child: CircularProgressIndicator(),
-          );
-        }
+  body() {
+    return new ListView.builder(
+      physics: BouncingScrollPhysics(),
+      itemCount: widget.anime.length,
+      itemBuilder: (context, index) {
+        return _buildListTitle(
+          widget.anime[index].imageUrl,
+          widget.anime[index].title,
+          widget.anime[index].date,
+        );
       },
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    return futureBuilder();
+    return body();
   }
 }

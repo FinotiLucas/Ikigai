@@ -1,24 +1,19 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:expand_widget/expand_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:ikigai/controllers/descriptionController.dart';
 import 'package:ikigai/utils/string_extension.dart';
 
 class ReviewsPage extends StatefulWidget {
-  ReviewsPage({Key key, this.animeId, this.option}) : super(key: key);
+  ReviewsPage({Key key, this.anime}) : super(key: key);
 
-  final animeId;
-  final int option;
+  final anime;
   @override
   _ReviewsPageState createState() => _ReviewsPageState();
 }
 
 class _ReviewsPageState extends State<ReviewsPage> {
-  Future _future;
-
   @override
   void initState() {
-    _future = getReviews(widget.animeId, widget.option);
     super.initState();
   }
 
@@ -73,33 +68,22 @@ class _ReviewsPageState extends State<ReviewsPage> {
     );
   }
 
-  futureBuilder() {
-    return new FutureBuilder(
-      future: _future,
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.done) {
-          return ListView.builder(
-            physics: BouncingScrollPhysics(),
-            itemCount: snapshot.data.length,
-            itemBuilder: (context, index) {
-              return _buildListTitle(
-                snapshot.data[index].reviewer.imageUrl,
-                snapshot.data[index].reviewer.username,
-                snapshot.data[index].content,
-              );
-            },
-          );
-        } else {
-          return Center(
-            child: CircularProgressIndicator(),
-          );
-        }
+  body() {
+    return new ListView.builder(
+      physics: BouncingScrollPhysics(),
+      itemCount: widget.anime.length,
+      itemBuilder: (context, index) {
+        return _buildListTitle(
+          widget.anime[index].reviewer.imageUrl,
+          widget.anime[index].reviewer.username,
+          widget.anime[index].content,
+        );
       },
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    return futureBuilder();
+    return body();
   }
 }

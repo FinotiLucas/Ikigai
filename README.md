@@ -39,7 +39,8 @@
 
 ### : Mobile
 
-<p>
+
+<p align="center">
 
 <img  src="./assets/screenshots/1.png"  width=265/>
 

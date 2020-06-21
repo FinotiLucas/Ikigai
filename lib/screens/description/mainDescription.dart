@@ -1,3 +1,4 @@
+import 'package:ikigai/controllers/descriptionController.dart';
 import 'package:ikigai/screens/description/characters.dart';
 import 'package:ikigai/screens/description/description.dart';
 import 'package:ikigai/screens/description/news.dart';
@@ -19,8 +20,10 @@ class _MainDescriptionPageState extends State<MainDescriptionPage> {
   final GlobalKey<ScaffoldState> _scaffoldKey =
       new GlobalKey<ScaffoldState>(); // Para o Drawer
 
+  Future _future;
   @override
   void initState() {
+    _future = fetchDescriptions(widget.anime.malId, widget.option);
     super.initState();
   }
 
@@ -33,7 +36,7 @@ class _MainDescriptionPageState extends State<MainDescriptionPage> {
     );
   }
 
-  body() {
+  body(data) {
     return Column(
       children: <Widget>[
         Container(
@@ -56,25 +59,37 @@ class _MainDescriptionPageState extends State<MainDescriptionPage> {
           child: TabBarView(
             children: [
               AnimesDescription(
-                anime: widget.anime,
-                option: widget.option,
+                heroTag: widget.anime.title +  widget.anime.imageUrl,
+                anime: data[0],
               ),
               NewsPage(
-                animeId: widget.anime.malId,
-                option: widget.option,
+                anime: data[1],
               ),
               CharactersPage(
-                animeId: widget.anime.malId,
-                option: widget.option,
+                anime: data[2],
               ),
               ReviewsPage(
-                animeId: widget.anime.malId,
-                option: widget.option,
+                anime: data[3],
               ),
             ],
           ),
         ),
       ],
+    );
+  }
+
+  futureBuilder() {
+    return new FutureBuilder(
+      future: _future,
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.done) {
+          return body(snapshot.data);
+        } else {
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+      },
     );
   }
 
@@ -85,7 +100,7 @@ class _MainDescriptionPageState extends State<MainDescriptionPage> {
       child: Scaffold(
         key: _scaffoldKey,
         appBar: mainAppBar(context, widget.anime.title),
-        body: body(),
+        body: futureBuilder(),
       ),
     );
   }
