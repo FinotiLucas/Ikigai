@@ -1,5 +1,5 @@
 
-# ikigai - Anime and Manga encyclopedia
+# Ikigai - Anime and Manga encyclopedia
   
   
 
@@ -29,16 +29,19 @@
 
 
 
-### :muscle: Project
+### 1. Download
 
-<b>ikigai</b> It is an application that serves as a way to organize the most important information about your favorite anime / manga, in addition to making you discover much more content
-
+<img  alt="Download Ikigai"  src="https://img.shields.io/github/downloads-pre/finotilucas/Ikigai/latest/total?color=blue&label=Ikigai%20%28Stable%29&github">
 
 
 </p>
 
-### : Mobile
+### 2. Introduction
 
+<b>ikigai</b> It is an application that serves as a way to organize the most important information about your favorite anime/manga, in addition to making you discover much more content
+
+
+### 3. Screenshots
 
 <p align="center">
 
