@@ -2,37 +2,41 @@
 # Ikigai - Anime and Manga encyclopedia
   
   
+<h4 align="center">
+  <img
+    src="https://wallup.net/wp-content/uploads/2016/01/98590-minimalism-Nippon-origami-digital_art-waves-Japan-birds-Nihon.jpg"
+  /><br />
 
-<h4  align="center">
- 
+  <b></b>
+</h4>
 
-<img  src="https://wallup.net/wp-content/uploads/2016/01/98590-minimalism-Nippon-origami-digital_art-waves-Japan-birds-Nihon.jpg"/><br> 
+<p align="center">
+  <a href="https://lucasfinoti.netlify.app">
+    <img
+      alt="Made by Lucas Finoti"
+      src="https://img.shields.io/badge/made%20by-LucasFinoti-red"
+    />
+  </a>
 
-<b></b> 
-
-</h4> 
-
-<p  align="center"> 
-
-<a  href="https://lucasfinoti.netlify.app">
-
-
-<img  alt="Made by Lucas Finoti"  src="https://img.shields.io/badge/made%20by-LucasFinoti-red">
-
-</a>
-  
-<img  alt="License"  src="https://img.shields.io/badge/license-Apache 2.0-red">
-  
+  <img
+    alt="License"
+    src="https://img.shields.io/badge/license-Apache 2.0-red"
+  />
 </p>
 
-<br>
+<br />
+
 
 
 
 ### 1. Download
 
-<img  alt="Download Ikigai"  src="https://img.shields.io/github/downloads-pre/finotilucas/Ikigai/latest/total?color=blue&label=Ikigai%20%28Stable%29&github">
-
+<a href="https://github.com/FinotiLucas/Ikigai/releases">
+  <img
+    alt="Download Ikigai"
+    src="https://img.shields.io/github/downloads-pre/finotilucas/Ikigai/latest/total?color=blue&label=Ikigai%20%28Stable%29&github"
+  />
+</a>
 
 </p>
 
@@ -44,19 +48,17 @@
 ### 3. Screenshots
 
 <p align="center">
+  <img src="./assets/screenshots/1.png" width="265" />
 
-<img  src="./assets/screenshots/1.png"  width=265/>
+  <img src="./assets/screenshots/2.png" width="265" />
 
-<img  src="./assets/screenshots/2.png"  width=265/>
+  <img src="./assets/screenshots/3.png" width="265" />
 
-<img  src="./assets/screenshots/3.png"  width=265/>
+  <img src="./assets/screenshots/4.png" width="265" />
 
-<img  src="./assets/screenshots/4.png"  width=265/>
+  <img src="./assets/screenshots/5.png" width="265" />
 
-<img  src="./assets/screenshots/5.png"  width=265/>
-
-<img  src="./assets/screenshots/6.png"  width=265/>
-
+  <img src="./assets/screenshots/6.png" width="265" />
 </p>
 
 ## :recycle:  Contribution
