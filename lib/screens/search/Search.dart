@@ -44,6 +44,7 @@ class _SearchPageState extends State<SearchPage> {
                     setState(() {
                       _search = controller.text;
                       _future = fetchSearch(controller.text);
+                      FocusScope.of(context).requestFocus(FocusNode());
                     });
                   },
                 ),
@@ -105,15 +106,9 @@ class _SearchPageState extends State<SearchPage> {
 
   noSearchImage() {
     return Flexible(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: <Widget>[
-          SizedBox(
-            child: Image.asset(
-              'assets/images/seach.jpg',
-            ),
-          ),
-        ],
+      child: Image.asset(
+        'assets/images/seach.png',
+        fit: BoxFit.fill,
       ),
     );
   }
@@ -124,8 +119,8 @@ class _SearchPageState extends State<SearchPage> {
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
           return type == 1
-              ? myGridView(snapshot.data[0], type)
-              : myGridView(snapshot.data[1], type);
+              ? myGridView(snapshot.data[0], type, false)
+              : myGridView(snapshot.data[1], type, false);
         } else {
           return Center(
             child: CircularProgressIndicator(),

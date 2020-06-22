@@ -1,12 +1,18 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:ikigai/classes/anime.dart';
+import 'package:ikigai/database/database.dart';
 import 'package:mdi/mdi.dart';
 
 class AnimesDescription extends StatefulWidget {
-  AnimesDescription({Key key, this.heroTag, this.anime}) : super(key: key);
+  AnimesDescription(
+      {Key key, this.heroTag, this.anime, this.option, this.isFavorite})
+      : super(key: key);
 
   final String heroTag;
   final anime;
+  final int option;
+  final bool isFavorite;
 
   @override
   AnimesDescriptionState createState() => AnimesDescriptionState();
@@ -17,13 +23,36 @@ class AnimesDescriptionState extends State<AnimesDescription> {
   double _height;
   double _width;
   double radius = 30;
-
   String title;
+
+  var _isFavorite;
 
   @override
   void initState() {
-    //_future = getInfo(widget.anime.malId, widget.option);
+    _isFavorite = widget.isFavorite;
     super.initState();
+  }
+
+  _addToDataBase() async {
+    Anime anime = Anime(
+      malId: widget.anime.malId,
+      option: widget.option,
+      title: widget.anime.title,
+      url: widget.anime.url,
+      imageUrl: widget.anime.imageUrl,
+      score: widget.anime.score,
+    );
+    await DBProvider.db.newAnime(anime);
+    setState(() {
+      _isFavorite = true;
+    });
+  }
+
+  removeFromDataBase() async {
+    await DBProvider.db.deleteAnime(widget.anime.malId);
+    setState(() {
+      _isFavorite = false;
+    });
   }
 
   animeImage(animeInfo) {
@@ -172,10 +201,13 @@ class AnimesDescriptionState extends State<AnimesDescription> {
 
   floatingActionButton() {
     return FloatingActionButton(
-      onPressed: () async {},
+      onPressed: () {
+        _isFavorite ? removeFromDataBase() : _addToDataBase();
+      },
       tooltip: 'Adcionar um novo anime ou Manga',
-      backgroundColor: Theme.of(context).primaryColor,
-      child: Icon(Icons.add),
+      backgroundColor:
+          _isFavorite ? Colors.green : Theme.of(context).primaryColor,
+      child: _isFavorite ? Icon(Icons.check) : Icon(Icons.add),
     );
   }
 

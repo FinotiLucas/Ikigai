@@ -31,7 +31,7 @@ class _AnimesListPageState extends State<AnimesListPage> {
       future: getTop(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
-          return myGridView(snapshot.data.anime, 1);
+          return myGridView(snapshot.data.anime, 1, false);
         } else {
           return Center(
             child: CircularProgressIndicator(),
@@ -40,7 +40,6 @@ class _AnimesListPageState extends State<AnimesListPage> {
       },
     );
   }
-
 
   @override
   Widget build(BuildContext context) {

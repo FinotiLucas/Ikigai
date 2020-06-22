@@ -1,5 +1,6 @@
 import 'package:ikigai/controllers/indicationsController.dart';
 import 'package:ikigai/screens/anime/animeCategories.dart';
+import 'package:ikigai/screens/home/home.dart';
 import 'package:ikigai/screens/indications/indications.dart';
 import 'package:ikigai/screens/manga/mangaCategories.dart';
 import 'package:ikigai/widgets/drawer.dart';
@@ -57,7 +58,7 @@ class _MainPageState extends State<MainPage> {
           flex: 3,
           child: TabBarView(
             children: [
-              Container(),
+              HomePage(),
               IndicationsPage(
                 data: data,
               ),

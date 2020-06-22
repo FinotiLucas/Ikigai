@@ -1,4 +1,5 @@
 import 'package:ikigai/controllers/descriptionController.dart';
+import 'package:ikigai/database/database.dart';
 import 'package:ikigai/screens/description/characters.dart';
 import 'package:ikigai/screens/description/description.dart';
 import 'package:ikigai/screens/description/news.dart';
@@ -21,11 +22,21 @@ class _MainDescriptionPageState extends State<MainDescriptionPage> {
       new GlobalKey<ScaffoldState>(); // Para o Drawer
 
   Future _future;
+  bool isFavorite;
   @override
   void initState() {
+    _isFavorite();
     _future = fetchDescriptions(widget.anime.malId, widget.option);
     super.initState();
   }
+
+  _isFavorite() async {
+    var favorite = await DBProvider.db.getAnime(widget.anime.malId);
+    setState(() {
+      isFavorite = favorite == null ? false : true;
+    });
+  }
+
 
   Widget _buildTab(String text) {
     return Tab(
@@ -59,8 +70,10 @@ class _MainDescriptionPageState extends State<MainDescriptionPage> {
           child: TabBarView(
             children: [
               AnimesDescription(
-                heroTag: widget.anime.title +  widget.anime.imageUrl,
+                heroTag: widget.anime.title + widget.anime.imageUrl,
                 anime: data[0],
+                option: widget.option,
+                isFavorite: isFavorite,
               ),
               NewsPage(
                 anime: data[1],

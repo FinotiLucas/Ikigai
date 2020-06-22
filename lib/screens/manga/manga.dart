@@ -31,7 +31,7 @@ class _MangasListPageState extends State<MangasListPage> {
       future: getTop(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
-          return myGridView(snapshot.data.manga, 2);
+          return myGridView(snapshot.data.manga, 2, false);
         } else {
           return Center(
             child: CircularProgressIndicator(),

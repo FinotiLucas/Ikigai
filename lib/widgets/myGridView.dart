@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 double radius = 15;
 
-Widget myGridView(animes, option) {
+Widget myGridView(animes, option, isFavorite) {
   return GridView.builder(
     itemCount: animes.length,
     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -19,7 +19,7 @@ Widget myGridView(animes, option) {
             new MaterialPageRoute(
               builder: (BuildContext context) => new MainDescriptionPage(
                 anime: animes[index],
-                option: option,
+                option: isFavorite ? animes[index].option : option,
               ),
             ),
           );

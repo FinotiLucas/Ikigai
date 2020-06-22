@@ -1,33 +1,47 @@
+import 'dart:convert';
+
+Anime animeFromJson(String str) {
+  final jsonData = json.decode(str);
+  return Anime.fromMap(jsonData);
+}
+
+String animeToJson(Anime data) {
+  final dyn = data.toMap();
+  return json.encode(dyn);
+}
+
 class Anime {
-  String malId;
+  int malId;
+  int option;
   String title;
   String url;
   String imageUrl;
-  String episodes;
-  String startDate;
-  String endDate;
-  String score;
+  double score;
 
-  Anime();
+  Anime({
+    this.malId,
+    this.option,
+    this.title,
+    this.url,
+    this.imageUrl,
+    this.score,
+  });
 
-  Anime.fromJson(Map<String, dynamic> json)
-      : malId = json['malId'],
-        title = json['title'],
-        url = json['url'],
-        imageUrl = json['image_url'],
-        episodes = json['episodes'],
-        startDate = json['start_date'],
-        endDate = json['end_date'],
-        score = json['score'];
+  factory Anime.fromMap(Map<String, dynamic> json) => new Anime(
+        malId: json['malId'],
+        option: json['option'],
+        title: json['title'],
+        url: json['url'],
+        imageUrl: json['imageUrl'],
+        score: json['score'],
+      );
 
-  Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toMap() => {
         'malId': malId,
+        'option': option,
         'title': title,
         'url': url,
-        'image_url': imageUrl,
-        'episodes': episodes,
-        'start_date': startDate,
-        'end_date': endDate,
+        'imageUrl': imageUrl,
         'score': score,
       };
 }

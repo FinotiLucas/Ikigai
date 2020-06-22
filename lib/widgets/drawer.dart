@@ -57,7 +57,7 @@ class _DrawerViewState extends State<DrawerView> {
     return Container(
       padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
       height: 100,
-      child: Column(
+      /*child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
@@ -82,7 +82,7 @@ class _DrawerViewState extends State<DrawerView> {
             },
           ),
         ],
-      ),
+      ),*/
       decoration: BoxDecoration(
         color: Theme.of(context).primaryColor,
       ),

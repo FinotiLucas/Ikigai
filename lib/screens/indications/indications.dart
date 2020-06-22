@@ -56,8 +56,8 @@ class _IndicationsPageState extends State<IndicationsPage> {
         ),
         Expanded(
           child: option == 1
-              ? myGridView(widget.data[0], option)
-              : myGridView(widget.data[1], option),
+              ? myGridView(widget.data[0], option, false)
+              : myGridView(widget.data[1], option, false),
         ),
       ],
     );
