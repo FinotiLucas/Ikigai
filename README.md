@@ -3,39 +3,24 @@
   
   
 <h4 align="center">
-  <img
-    src="https://wallup.net/wp-content/uploads/2016/01/98590-minimalism-Nippon-origami-digital_art-waves-Japan-birds-Nihon.jpg"
-  /><br />
-
-  <b></b>
+  <img src="https://wallup.net/wp-content/uploads/2016/01/98590-minimalism-Nippon-origami-digital_art-waves-Japan-birds-Nihon.jpg"/>
+  <br />
 </h4>
 
 <p align="center">
   <a href="https://lucasfinoti.netlify.app">
-    <img
-      alt="Made by Lucas Finoti"
-      src="https://img.shields.io/badge/made%20by-LucasFinoti-red"
-    />
+    <img alt="Made by Lucas Finoti" src="https://img.shields.io/badge/made%20by-LucasFinoti-red"/>
   </a>
-
-  <img
-    alt="License"
-    src="https://img.shields.io/badge/license-Apache 2.0-red"
-  />
+  <a href="https://github.com/FinotiLucas/Ikigai/blob/master/LICENSE">
+    <img alt="License" src="https://img.shields.io/badge/license-Apache 2.0-red"/>
+  </a>
 </p>
-
-<br />
-
-
 
 
 ### 1. Download
 
 <a href="https://github.com/FinotiLucas/Ikigai/releases">
-  <img
-    alt="Download Ikigai"
-    src="https://img.shields.io/github/downloads-pre/finotilucas/Ikigai/latest/total?color=blue&label=Ikigai%20%28Stable%29&github"
-  />
+  <img alt="Download Ikigai" src="https://img.shields.io/github/downloads-pre/finotilucas/Ikigai/latest/total?color=blue&label=Ikigai%20%28Stable%29&github"/>
 </a>
 
 </p>
