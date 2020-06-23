@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class SplashScreen extends StatefulWidget {
   SplashScreen({
@@ -28,13 +29,25 @@ class _SplashScreenState extends State<SplashScreen> {
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
+              
               Text(
-                "Ikigai",
-                style: TextStyle(
-                  fontSize: 32,
-                  fontFamily: "Lobster",
-                  color: Colors.white,
+                "IKIGAI",
+                style: GoogleFonts.architectsDaughter(
+                  textStyle: TextStyle(
+                    color: Colors.white,
+                  ),
+                  fontSize: 50,
+                  fontWeight: FontWeight.w700,
+                  fontStyle: FontStyle.italic,
+                ),
+              ),
+              SizedBox(
+                width: 100,
+                child: Image.asset(
+                  "assets/foreground.png",
+                  fit: BoxFit.fill,
                 ),
               ),
             ],
@@ -57,7 +70,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Text(
-                    "Aliati",
+                    "Lucas",
                     style: TextStyle(
                       fontSize: 20,
                       fontFamily: "Lobster",
@@ -65,7 +78,7 @@ class _SplashScreenState extends State<SplashScreen> {
                     ),
                   ),
                   Text(
-                    "Software",
+                    "Finoti",
                     style: TextStyle(
                       fontSize: 20,
                       color: Colors.white,

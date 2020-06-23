@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:ikigai/utils/webview.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class NewsPage extends StatefulWidget {
   NewsPage({Key key, this.anime}) : super(key: key);
@@ -17,7 +17,7 @@ class _NewsPageState extends State<NewsPage> {
     super.initState();
   }
 
-  _launchURL(String title, String selectedUrl) async {
+  /*_launchURL(String title, String selectedUrl) async {
     Navigator.push(
       context,
       new MaterialPageRoute(
@@ -27,6 +27,14 @@ class _NewsPageState extends State<NewsPage> {
         ),
       ),
     );
+  }*/
+
+  _launchURL(url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 
   _buildListTitle(String leading, String title, String subtitle, String url) {
@@ -70,7 +78,8 @@ class _NewsPageState extends State<NewsPage> {
         ),
         trailing: Icon(Icons.keyboard_arrow_right),
         onTap: () async {
-          _launchURL(title, url);
+          //_launchURL(title, url);
+          _launchURL(url);
         },
       ),
     );

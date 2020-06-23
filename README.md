@@ -3,7 +3,7 @@
   
   
 <h4 align="center">
-  <img src="https://wallup.net/wp-content/uploads/2016/01/98590-minimalism-Nippon-origami-digital_art-waves-Japan-birds-Nihon.jpg"/>
+  <img src="./assets/screenshots/logo.png"/>
   <br />
 </h4>
 

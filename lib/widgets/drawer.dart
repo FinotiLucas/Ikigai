@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:ikigai/screens/schedule/schedule.dart';
 import 'package:ikigai/screens/season/season.dart';
-import 'package:ikigai/utils/webview.dart';
 import 'package:mdi/mdi.dart';
 import 'package:share/share.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class DrawerView extends StatefulWidget {
   DrawerView({Key key}) : super(key: key);
@@ -30,7 +31,7 @@ class _DrawerViewState extends State<DrawerView> {
     );
   }
 
-  _launchURL(String title, String selectedUrl) async {
+  /*_launchURL(String title, String selectedUrl) async {
     Navigator.push(
       context,
       new MaterialPageRoute(
@@ -40,12 +41,20 @@ class _DrawerViewState extends State<DrawerView> {
         ),
       ),
     );
+  }*/
+
+  _launchURL(url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 
   _share() async {
     //https://github.com/FinotiLucas/Ikigai/releases
     Share.share(
-      'Check out this app https://github.com/FinotiLucas/Ikigai/releases',
+      'Check this app out https://github.com/FinotiLucas/Ikigai/releases',
       subject: 'Check out Ikigai, Anime and Manga encyclopedia',
     );
   }
@@ -82,7 +91,7 @@ class _DrawerViewState extends State<DrawerView> {
       title: Text(title),
       leading: leading,
       onTap: () {
-        _launchURL(title, url);
+        _launchURL(url);
       },
     );
   }
@@ -98,25 +107,24 @@ class _DrawerViewState extends State<DrawerView> {
   }
 
   drawerHeader() {
-    return Container(
-      padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
-      height: 150,
+    return DrawerHeader(
+      decoration: BoxDecoration(color: Theme.of(context).primaryColor),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Text(
-            "Ikigai",
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 32,
-              fontWeight: FontWeight.w500,
+            "IKIGAI",
+            style: GoogleFonts.architectsDaughter(
+              textStyle: TextStyle(
+                color: Colors.white,
+              ),
+              fontSize: 48,
+              fontWeight: FontWeight.w700,
+              fontStyle: FontStyle.italic,
             ),
           ),
         ],
-      ),
-      decoration: BoxDecoration(
-        color: Theme.of(context).primaryColor,
       ),
     );
   }
@@ -150,8 +158,6 @@ class _DrawerViewState extends State<DrawerView> {
   @override
   Widget build(BuildContext context) {
     _context = context;
-    return SafeArea(
-      child: drawer(),
-    );
+    return drawer();
   }
 }
