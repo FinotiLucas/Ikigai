@@ -1,8 +1,17 @@
+import 'package:flutter/services.dart';
 import 'package:ikigai/screens/mainScreen/mainScreen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
   runApp(MyApp());
+  _portraitModeOnly();
+}
+
+void _portraitModeOnly() {
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
 }
 
 class MyApp extends StatelessWidget {

@@ -37,6 +37,13 @@ class _MainDescriptionPageState extends State<MainDescriptionPage> {
     });
   }
 
+  String _setHeroTag() {
+    if (isFavorite) {
+      return widget.anime.title + widget.anime.imageUrl + widget.anime.title;
+    } else {
+      return widget.anime.title + widget.anime.imageUrl;
+    }
+  }
 
   Widget _buildTab(String text) {
     return Tab(
@@ -70,7 +77,7 @@ class _MainDescriptionPageState extends State<MainDescriptionPage> {
           child: TabBarView(
             children: [
               AnimesDescription(
-                heroTag: widget.anime.title + widget.anime.imageUrl,
+                heroTag: _setHeroTag(),
                 anime: data[0],
                 option: widget.option,
                 isFavorite: isFavorite,

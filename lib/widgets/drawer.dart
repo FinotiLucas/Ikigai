@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:ikigai/screens/schedule/schedule.dart';
+import 'package:ikigai/screens/season/season.dart';
 import 'package:mdi/mdi.dart';
 
 class DrawerView extends StatefulWidget {
@@ -56,33 +58,21 @@ class _DrawerViewState extends State<DrawerView> {
   drawerHeader() {
     return Container(
       padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
-      height: 100,
-      /*child: Column(
+      height: 150,
+      child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          ListTile(
-            title: Text(
-              "Please login",
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold),
+          Text(
+            "Ikigai",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 32,
+              fontWeight: FontWeight.w500,
             ),
-            subtitle: Text(
-              "or sign up",
-              style: TextStyle(
-                color: Color.fromRGBO(255, 249, 244, 0.8),
-              ),
-            ),
-            leading: Icon(Mdi.account,
-                size: 40, color: Color.fromRGBO(255, 249, 244, 0.8)),
-            onTap: () {
-              print("Hello from DrawerHeader");
-            },
           ),
         ],
-      ),*/
+      ),
       decoration: BoxDecoration(
         color: Theme.of(context).primaryColor,
       ),
@@ -96,16 +86,15 @@ class _DrawerViewState extends State<DrawerView> {
         padding: EdgeInsets.zero,
         children: <Widget>[
           drawerHeader(),
-          //listTitle("favorites", true, Icon(Mdi.cardsHeart), null),
-          listTitle("Season", true, Icon(Mdi.clipboardTextPlay), null),
-          listTitle("Schedule", true, Icon(Mdi.clockTimeSeven), null),
-          listTitle("Magazine", true, Icon(Mdi.newspaperVariant), null),
+          listTitle("Season", true, Icon(Mdi.clipboardTextPlay), SeasonPage()),
+          listTitle("Schedule", true, Icon(Mdi.clockTimeSeven), SchedulePage()),
+          //listTitle("Configurations", true, Icon(Mdi.cog), SchedulePage()),
           Divider(
             height: 10,
             thickness: 2,
           ),
-          listTitle("Share us with your friends", true, Icon(Mdi.share), null),
-          listTitle("About", true, Icon(Mdi.information), null),
+          //listTitle("Share us with your friends", true, Icon(Mdi.share), null),
+          //listTitle("About", true, Icon(Mdi.information), null),
         ],
       ),
     );

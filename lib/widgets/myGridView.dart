@@ -4,7 +4,15 @@ import 'package:flutter/material.dart';
 
 double radius = 15;
 
-Widget myGridView(animes, option, isFavorite) {
+String _setHeroTag(bool isFavorite, data) {
+  if (isFavorite) {
+    return data.title + data.imageUrl + data.title;
+  } else {
+    return data.title + data.imageUrl;
+  }
+}
+
+Widget myGridView(animes, int option, bool isFavorite) {
   return GridView.builder(
     itemCount: animes.length,
     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -34,7 +42,7 @@ Widget myGridView(animes, option, isFavorite) {
               Container(
                 height: 150,
                 child: Hero(
-                  tag: animes[index].title + animes[index].imageUrl,
+                  tag: _setHeroTag(isFavorite, animes[index]),
                   child: CachedNetworkImage(
                     imageUrl: animes[index].imageUrl,
                     imageBuilder: (context, imageProvider) => Container(
