@@ -3,6 +3,7 @@ import 'package:ikigai/screens/anime/animeCategories.dart';
 import 'package:ikigai/screens/home/home.dart';
 import 'package:ikigai/screens/indications/indications.dart';
 import 'package:ikigai/screens/manga/mangaCategories.dart';
+import 'package:ikigai/screens/splash/splash.dart';
 import 'package:ikigai/widgets/drawer.dart';
 import 'package:ikigai/widgets/mainAppBar.dart';
 import 'package:flutter/material.dart';
@@ -88,7 +89,7 @@ class _MainPageState extends State<MainPage> {
         } else {
           return Scaffold(
             body: Center(
-              child: CircularProgressIndicator(),
+              child: SplashScreen(),
             ),
           );
         }

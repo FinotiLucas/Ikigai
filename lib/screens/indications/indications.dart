@@ -12,6 +12,8 @@ class IndicationsPage extends StatefulWidget {
 
 class _IndicationsPageState extends State<IndicationsPage> {
   int option = 1;
+  double radius = 10;
+  Color selectButtonColor;
 
   @override
   void initState() {
@@ -28,26 +30,33 @@ class _IndicationsPageState extends State<IndicationsPage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               FlatButton.icon(
-                color: Theme.of(context).primaryColor,
-                icon: Icon(Mdi.televisionClassic, color: Colors.white),
+                color: option == 1 ? selectButtonColor : Colors.grey,
+                icon: Icon(
+                  Mdi.televisionClassic,
+                  color: Colors.white,
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(radius),
+                ),
                 label:
                     Text('Top Animes', style: TextStyle(color: Colors.white)),
                 onPressed: () {
                   setState(() {
                     option = 1;
-                    //_future = getTopAnime();
                   });
                 },
               ),
               FlatButton.icon(
-                color: Theme.of(context).primaryColor,
+                color: option == 2 ? selectButtonColor : Colors.grey,
                 icon: Icon(Mdi.bookOpen, color: Colors.white),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(radius),
+                ),
                 label:
                     Text('Top Mangas', style: TextStyle(color: Colors.white)),
                 onPressed: () {
                   setState(() {
                     option = 2;
-                    //_future = getTopMangas();
                   });
                 },
               ),
@@ -65,8 +74,7 @@ class _IndicationsPageState extends State<IndicationsPage> {
 
   @override
   Widget build(BuildContext context) {
-    /*_height = MediaQuery.of(context).size.height;
-    _width = MediaQuery.of(context).size.width;*/
+    selectButtonColor = Theme.of(context).primaryColor;
     return Scaffold(
       body: body(),
     );

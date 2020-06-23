@@ -49,8 +49,6 @@ class _SeasonPageState extends State<SeasonPage> {
 
   @override
   Widget build(BuildContext context) {
-    /*_height = MediaQuery.of(context).size.height;
-    _width = MediaQuery.of(context).size.width;*/
     return Scaffold(
       body: futureBuilder(),
       appBar: mainAppBar(context, " $seasonName $seasonYear"),

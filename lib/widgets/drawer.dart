@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:ikigai/screens/schedule/schedule.dart';
 import 'package:ikigai/screens/season/season.dart';
+import 'package:ikigai/utils/webview.dart';
 import 'package:mdi/mdi.dart';
+import 'package:share/share.dart';
 
 class DrawerView extends StatefulWidget {
   DrawerView({Key key}) : super(key: key);
@@ -25,6 +27,26 @@ class _DrawerViewState extends State<DrawerView> {
       MaterialPageRoute(
         builder: (_context) => page,
       ),
+    );
+  }
+
+  _launchURL(String title, String selectedUrl) async {
+    Navigator.push(
+      context,
+      new MaterialPageRoute(
+        builder: (BuildContext context) => new MyWebView(
+          title: title,
+          selectedUrl: selectedUrl,
+        ),
+      ),
+    );
+  }
+
+  _share() async {
+    //https://github.com/FinotiLucas/Ikigai/releases
+    Share.share(
+      'Check out this app https://github.com/FinotiLucas/Ikigai/releases',
+      subject: 'Check out Ikigai, Anime and Manga encyclopedia',
     );
   }
 
@@ -53,6 +75,26 @@ class _DrawerViewState extends State<DrawerView> {
               );
             },
           );
+  }
+
+  listTitleUrl(String title, bool hasIcon, Widget leading, String url) {
+    return ListTile(
+      title: Text(title),
+      leading: leading,
+      onTap: () {
+        _launchURL(title, url);
+      },
+    );
+  }
+
+  listTitleShare(String title, bool hasIcon, Widget leading) {
+    return ListTile(
+      title: Text(title),
+      leading: leading,
+      onTap: () {
+        _share();
+      },
+    );
   }
 
   drawerHeader() {
@@ -93,8 +135,13 @@ class _DrawerViewState extends State<DrawerView> {
             height: 10,
             thickness: 2,
           ),
-          //listTitle("Share us with your friends", true, Icon(Mdi.share), null),
-          //listTitle("About", true, Icon(Mdi.information), null),
+          listTitleShare("Share us with your friends", true, Icon(Mdi.share)),
+          listTitleUrl(
+            "About",
+            true,
+            Icon(Mdi.information),
+            "https://github.com/FinotiLucas/Ikigai",
+          ),
         ],
       ),
     );

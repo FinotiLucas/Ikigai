@@ -14,12 +14,22 @@ class _SearchPageState extends State<SearchPage> {
   var _search;
   Future _future;
   int type;
+  Color selectButtonColor;
+  double radius = 10;
 
   @override
   void initState() {
     type = 1;
     _search = null;
     super.initState();
+  }
+
+  _getSearch(value) {
+    setState(() {
+      _search = value;
+      _future = fetchSearch(value);
+      FocusScope.of(context).requestFocus(FocusNode());
+    });
   }
 
   body() {
@@ -35,17 +45,18 @@ class _SearchPageState extends State<SearchPage> {
                 title: new TextField(
                   controller: controller,
                   decoration: new InputDecoration(
-                      hintText: 'Search for a anime, manga or character',
-                      border: InputBorder.none),
+                    hintText: 'Search for a anime, manga or character',
+                    border: InputBorder.none,
+                  ),
+                  onSubmitted: (value) async {
+                    _getSearch(value);
+                  },
+                  textInputAction: TextInputAction.search,
                 ),
                 trailing: new IconButton(
                   icon: new Icon(Icons.done),
                   onPressed: () async {
-                    setState(() {
-                      _search = controller.text;
-                      _future = fetchSearch(controller.text);
-                      FocusScope.of(context).requestFocus(FocusNode());
-                    });
+                    _getSearch(controller.text);
                   },
                 ),
               ),
@@ -59,10 +70,18 @@ class _SearchPageState extends State<SearchPage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               FlatButton.icon(
-                color: Theme.of(context).primaryColor,
-                icon: Icon(Mdi.televisionClassic, color: Colors.white),
-                label: Text('Search for Animes',
-                    style: TextStyle(color: Colors.white)),
+                color: type == 1 ? selectButtonColor : Colors.grey,
+                icon: Icon(
+                  Mdi.televisionClassic,
+                  color: Colors.white,
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(radius),
+                ),
+                label: Text(
+                  'Search for Animes',
+                  style: TextStyle(color: Colors.white),
+                ),
                 onPressed: () {
                   setState(() {
                     type = 1;
@@ -70,28 +89,24 @@ class _SearchPageState extends State<SearchPage> {
                 },
               ),
               FlatButton.icon(
-                color: Theme.of(context).primaryColor,
-                icon: Icon(Mdi.bookOpen, color: Colors.white),
-                label: Text('Search for Mangas',
-                    style: TextStyle(color: Colors.white)),
+                color: type == 2 ? selectButtonColor : Colors.grey,
+                icon: Icon(
+                  Mdi.bookOpen,
+                  color: Colors.white,
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(radius),
+                ),
+                label: Text(
+                  'Search for Mangas',
+                  style: TextStyle(color: Colors.white),
+                ),
                 onPressed: () {
                   setState(() {
                     type = 2;
                   });
                 },
               ),
-              /*FlatButton.icon(
-                color: Theme.of(context).primaryColor,
-                icon: Icon(Mdi.accountMultiple, color: Colors.white),
-                label:
-                    Text('Characters', style: TextStyle(color: Colors.white)),
-                onPressed: () {
-                  setState(() {
-                    type = 3;
-                    _future = getCharacterSearch(controller.text);
-                  });
-                },
-              ),*/
             ],
           ),
         ),
@@ -132,6 +147,7 @@ class _SearchPageState extends State<SearchPage> {
 
   @override
   Widget build(BuildContext context) {
+    selectButtonColor = Theme.of(context).primaryColor;
     return new Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: new AppBar(

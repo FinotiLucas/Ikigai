@@ -50,8 +50,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    /*_height = MediaQuery.of(context).size.height;
-    _width = MediaQuery.of(context).size.width;*/
     return Scaffold(
       body: futureBuilder(),
     );

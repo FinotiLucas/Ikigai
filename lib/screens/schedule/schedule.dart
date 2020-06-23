@@ -13,12 +13,10 @@ class SchedulePage extends StatefulWidget {
 class _SchedulePageState extends State<SchedulePage> {
   int option = 1;
   int index = 0;
+  double fontSize = 16;
   Future _future;
-  String seasonName = "";
-  String seasonYear = "";
 
-  // <- define a local property/ Option 2
-  String _dropDownValue;
+
   WeekDayList _selectedWeekDay;
 
   @override
@@ -61,7 +59,7 @@ class _SchedulePageState extends State<SchedulePage> {
                         'Choose a day of the week',
                         style: TextStyle(
                           color: Theme.of(context).primaryColor,
-                          fontSize: 16,
+                          fontSize: fontSize,
                           fontWeight: FontWeight.w500,
                         ),
                       )
@@ -69,7 +67,7 @@ class _SchedulePageState extends State<SchedulePage> {
                         _selectedWeekDay.name,
                         style: TextStyle(
                           color: Theme.of(context).primaryColor,
-                          fontSize: 16,
+                          fontSize: fontSize,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
@@ -77,7 +75,7 @@ class _SchedulePageState extends State<SchedulePage> {
                 iconSize: 40.0,
                 style: TextStyle(
                   color: Theme.of(context).primaryColor,
-                  fontSize: 16,
+                  fontSize: fontSize,
                   fontWeight: FontWeight.w500,
                 ),
                 items: WeekDayList.getLanguages().map((WeekDayList weekDay) {

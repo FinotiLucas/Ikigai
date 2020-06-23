@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:ikigai/utils/webview.dart';
 
 class NewsPage extends StatefulWidget {
   NewsPage({Key key, this.anime}) : super(key: key);
@@ -16,7 +17,19 @@ class _NewsPageState extends State<NewsPage> {
     super.initState();
   }
 
-  _buildListTitle(String leading, String title, String subtitle) {
+  _launchURL(String title, String selectedUrl) async {
+    Navigator.push(
+      context,
+      new MaterialPageRoute(
+        builder: (BuildContext context) => new MyWebView(
+          title: title,
+          selectedUrl: selectedUrl,
+        ),
+      ),
+    );
+  }
+
+  _buildListTitle(String leading, String title, String subtitle, String url) {
     return Container(
       padding: EdgeInsets.fromLTRB(0, 20, 0, 10),
       child: ListTile(
@@ -56,11 +69,9 @@ class _NewsPageState extends State<NewsPage> {
           textAlign: TextAlign.justify,
         ),
         trailing: Icon(Icons.keyboard_arrow_right),
-        /*onTap: () async {
-          var jikan = Jikan();
-          var char = await jikan.getMangaNews(widget.animeId);
-          print(char);
-        },*/
+        onTap: () async {
+          _launchURL(title, url);
+        },
       ),
     );
   }
@@ -74,6 +85,7 @@ class _NewsPageState extends State<NewsPage> {
           widget.anime[index].imageUrl,
           widget.anime[index].title,
           widget.anime[index].date,
+          widget.anime[index].url,
         );
       },
     );

@@ -1,5 +1,5 @@
 
-# Ikigai - Anime and Manga encyclopedia
+# Ikigai - Anime and Manga encyclopedia.
   
   
 <h4 align="center">
@@ -18,19 +18,28 @@
 
 
 ### 1. Download
+You can download the apk directly through github, in the future we will launch in other stores.
 
 <a href="https://github.com/FinotiLucas/Ikigai/releases">
-  <img alt="Download Ikigai" src="https://img.shields.io/github/downloads-pre/finotilucas/Ikigai/latest/total?color=blue&label=Ikigai%20%28Stable%29&github"/>
+  <img  alt="Download Ikigai"  src="https://img.shields.io/github/downloads-pre/finotilucas/Ikigai/latest/total?color=blue&label=Ikigai%20%28Alpha%29&github"/>
 </a>
 
 </p>
 
 ### 2. Introduction
 
-<b>ikigai</b> It is an application that serves as a way to organize the most important information about your favorite anime/manga, in addition to making you discover much more content
+<b>ikigai</b> has the objective of organizing your favorites anime/manga and keep then always updated, knowing when new episodes will be released and on which days of the week, discovering all that's new in the current season and choosing the best anime/manga to follow, all with lots of extra nerdy information.
 
+### 3. Features  
 
-### 3. Screenshots
+- Add an anime or manga to your favorites
+- View the latest news related to a specific anime or manga
+- Extra information about the main and supporting characters of an anime or manga
+- User ratings and reviews for a specific anime / manga
+- See what's new in the current season
+- See the release schedule of the new episodes organized by the days of the week
+
+### 4. Screenshots
 
 <p align="center">
   <img src="./assets/screenshots/1.png" width="265" />
