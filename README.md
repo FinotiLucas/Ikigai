@@ -21,7 +21,7 @@
 You can download the apk directly through github, in the future we will launch in other stores.
 
 <a href="https://github.com/FinotiLucas/Ikigai/releases">
-  <img  alt="Download Ikigai"  src="https://img.shields.io/github/downloads-pre/finotilucas/Ikigai/latest/total?color=blue&label=Ikigai%20%28Alpha%29&github"/>
+  <img  alt="Download Ikigai"  src="https://img.shields.io/github/downloads-pre/finotilucas/Ikigai/latest/total?color=blue&label=Ikigai%20%28Beta%29&github"/>
 </a>
 
 </p>
