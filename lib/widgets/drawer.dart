@@ -31,18 +31,6 @@ class _DrawerViewState extends State<DrawerView> {
     );
   }
 
-  /*_launchURL(String title, String selectedUrl) async {
-    Navigator.push(
-      context,
-      new MaterialPageRoute(
-        builder: (BuildContext context) => new MyWebView(
-          title: title,
-          selectedUrl: selectedUrl,
-        ),
-      ),
-    );
-  }*/
-
   _launchURL(url) async {
     if (await canLaunch(url)) {
       await launch(url);

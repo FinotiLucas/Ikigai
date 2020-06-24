@@ -46,6 +46,7 @@ class AnimesDescriptionState extends State<AnimesDescription> {
     setState(() {
       _isFavorite = true;
     });
+    _displaySnackBar("Added to favorites");
   }
 
   removeFromDataBase() async {
@@ -53,6 +54,16 @@ class AnimesDescriptionState extends State<AnimesDescription> {
     setState(() {
       _isFavorite = false;
     });
+    _displaySnackBar("Removed from favorites");
+  }
+
+  void _displaySnackBar(String text) {
+    Scaffold.of(context).showSnackBar(
+      SnackBar(
+        content: Text(text),
+        duration: Duration(seconds: 1),
+      ),
+    );
   }
 
   animeImage(animeInfo) {

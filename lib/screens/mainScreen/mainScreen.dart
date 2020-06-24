@@ -28,6 +28,10 @@ class _MainPageState extends State<MainPage> {
     super.initState();
   }
 
+  Future initData() async {
+    await Future.delayed(Duration(milliseconds: 1500));
+  }
+
   Widget _buildTab(String text) {
     return Tab(
       child: Text(

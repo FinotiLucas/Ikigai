@@ -31,7 +31,6 @@ class _SplashScreenState extends State<SplashScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              
               Text(
                 "IKIGAI",
                 style: GoogleFonts.architectsDaughter(
