@@ -1,4 +1,4 @@
-import 'package:ikigai/screens/description/mainDescription.dart';
+import 'package:ikigai/routers/routersName.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
@@ -22,14 +22,10 @@ Widget myGridView(animes, int option, bool isFavorite) {
     itemBuilder: (context, index) {
       return GestureDetector(
         onTap: () async {
-          Navigator.push(
-            context,
-            new MaterialPageRoute(
-              builder: (BuildContext context) => new MainDescriptionPage(
-                anime: animes[index],
-                option: isFavorite ? animes[index].option : option,
-              ),
-            ),
+          var _option = isFavorite ? animes[index].option : option;
+          Navigator.of(context).pushNamed(
+            RoutersName.descriptionRoute,
+            arguments: DescriptionArguments(animes[index], _option),
           );
         },
         child: Card(

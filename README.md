@@ -42,6 +42,8 @@ You can download the apk directly through github, in the future we will launch i
 ### 4. Screenshots
 
 <p align="center">
+  <img src="./assets/screenshots/0.png" width="265" />
+
   <img src="./assets/screenshots/1.png" width="265" />
 
   <img src="./assets/screenshots/2.png" width="265" />
@@ -53,6 +55,10 @@ You can download the apk directly through github, in the future we will launch i
   <img src="./assets/screenshots/5.png" width="265" />
 
   <img src="./assets/screenshots/6.png" width="265" />
+
+  <img src="./assets/screenshots/7.png" width="265" />
+
+  <img src="./assets/screenshots/8.png" width="265" />
 </p>
 
 ## :recycle:  Contribution

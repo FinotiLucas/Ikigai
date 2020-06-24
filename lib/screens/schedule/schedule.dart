@@ -13,10 +13,9 @@ class SchedulePage extends StatefulWidget {
 class _SchedulePageState extends State<SchedulePage> {
   int option = 1;
   int index = 0;
-  double fontSize = 16;
+  double fontSize = 18;
   Future _future;
-
-
+  double _width;
   WeekDayList _selectedWeekDay;
 
   @override
@@ -46,9 +45,11 @@ class _SchedulePageState extends State<SchedulePage> {
   body(data) {
     return Column(
       children: <Widget>[
-        SizedBox(
-          width: MediaQuery.of(context).size.width * 0.8,
+        Container(
+          width: MediaQuery.of(context).size.width,
+          padding: EdgeInsets.fromLTRB(_width * 0.1, 0, _width * 0.1, 0),
           height: 60,
+          color: Theme.of(context).primaryColor,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -58,7 +59,7 @@ class _SchedulePageState extends State<SchedulePage> {
                     ? Text(
                         'Choose a day of the week',
                         style: TextStyle(
-                          color: Theme.of(context).primaryColor,
+                          color: Colors.white,
                           fontSize: fontSize,
                           fontWeight: FontWeight.w500,
                         ),
@@ -66,13 +67,17 @@ class _SchedulePageState extends State<SchedulePage> {
                     : Text(
                         _selectedWeekDay.name,
                         style: TextStyle(
-                          color: Theme.of(context).primaryColor,
+                          color: Colors.white,
                           fontSize: fontSize,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
+                icon: Icon(
+                  Icons.arrow_drop_down,
+                  color: Colors.white,
+                  size: 45,
+                ),
                 isExpanded: true,
-                iconSize: 40.0,
                 style: TextStyle(
                   color: Theme.of(context).primaryColor,
                   fontSize: fontSize,
@@ -120,6 +125,7 @@ class _SchedulePageState extends State<SchedulePage> {
 
   @override
   Widget build(BuildContext context) {
+    _width = MediaQuery.of(context).size.width;
     return Scaffold(
       body: futureBuilder(),
       appBar: mainAppBar(context, "Anime Schedule"),

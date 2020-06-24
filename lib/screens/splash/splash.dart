@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ikigai/utils/utils.dart';
 
 class SplashScreen extends StatefulWidget {
   SplashScreen({
@@ -52,7 +53,7 @@ class _SplashScreenState extends State<SplashScreen> {
             ],
           ),
           Expanded(
-            child: Image.asset('assets/images/splash.png'),
+            child: Image.asset(AvailableImages.splash),
           ),
           Column(
             mainAxisAlignment: MainAxisAlignment.end,

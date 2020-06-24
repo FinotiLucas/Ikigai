@@ -1,4 +1,5 @@
 import 'package:ikigai/controllers/searchController.dart';
+import 'package:ikigai/utils/utils.dart';
 import 'package:ikigai/widgets/myGridView.dart';
 import 'package:flutter/material.dart';
 import 'package:mdi/mdi.dart';
@@ -122,7 +123,7 @@ class _SearchPageState extends State<SearchPage> {
   noSearchImage() {
     return Flexible(
       child: Image.asset(
-        'assets/images/seach.png',
+        AvailableImages.seach,
         fit: BoxFit.fill,
       ),
     );

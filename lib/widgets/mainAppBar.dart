@@ -1,5 +1,5 @@
 import 'package:google_fonts/google_fonts.dart';
-import 'package:ikigai/screens/search/Search.dart';
+import 'package:ikigai/routers/routersName.dart';
 import 'package:flutter/material.dart';
 import 'package:mdi/mdi.dart';
 
@@ -28,12 +28,7 @@ Widget mainAppBar(BuildContext context, String title) {
           size: 30,
         ),
         onPressed: () {
-          Navigator.push(
-            context,
-            new MaterialPageRoute(
-              builder: (BuildContext context) => new SearchPage(),
-            ),
-          );
+          Navigator.of(context).pushNamed(RoutersName.searchRoute);
         },
       ),
     ],

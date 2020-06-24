@@ -1,4 +1,5 @@
 import 'package:ikigai/database/database.dart';
+import 'package:ikigai/utils/utils.dart';
 import 'package:ikigai/widgets/myGridView.dart';
 import 'package:flutter/material.dart';
 
@@ -24,7 +25,7 @@ class _HomePageState extends State<HomePage> {
       children: <Widget>[
         SizedBox(
           child: Image.asset(
-            'assets/images/home.png',
+            AvailableImages.home,
           ),
         ),
       ],

@@ -1,6 +1,8 @@
 import 'package:flutter/services.dart';
-import 'package:ikigai/screens/mainScreen/mainScreen.dart';
+import 'package:ikigai/routers/routersName.dart';
+import 'package:ikigai/routers/routers.dart';
 import 'package:flutter/material.dart';
+import 'package:ikigai/utils/utils.dart';
 
 void main() {
   runApp(MyApp());
@@ -19,13 +21,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: AppConstants.appName,
       theme: ThemeData(
         primaryColor: Colors.deepOrangeAccent,
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MainPage(),
+      onGenerateRoute: generateRoute,
+      initialRoute: RoutersName.homeRoute,
     );
   }
 }

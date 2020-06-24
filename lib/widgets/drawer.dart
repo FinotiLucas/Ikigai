@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:ikigai/screens/schedule/schedule.dart';
-import 'package:ikigai/screens/season/season.dart';
+import 'package:ikigai/routers/routersName.dart';
 import 'package:mdi/mdi.dart';
 import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -14,7 +13,6 @@ class DrawerView extends StatefulWidget {
 }
 
 class _DrawerViewState extends State<DrawerView> {
-  BuildContext _context;
   bool isLogged;
   @override
   void initState() {
@@ -22,13 +20,8 @@ class _DrawerViewState extends State<DrawerView> {
     super.initState();
   }
 
-  void goToScreen(Widget page) {
-    Navigator.push(
-      _context,
-      MaterialPageRoute(
-        builder: (_context) => page,
-      ),
-    );
+  void goToScreen(String route) {
+    Navigator.of(context).pushNamed(route);
   }
 
   _launchURL(url) async {
@@ -47,29 +40,19 @@ class _DrawerViewState extends State<DrawerView> {
     );
   }
 
-  listTitle(String title, bool hasIcon, Widget leading, Widget page) {
+  listTitle(String title, bool hasIcon, Widget leading, String route) {
     return hasIcon
         ? ListTile(
             title: Text(title),
             leading: leading,
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => page,
-                ),
-              );
+              goToScreen(route);
             },
           )
         : ListTile(
             title: Text(title),
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => page,
-                ),
-              );
+              goToScreen(route);
             },
           );
   }
@@ -124,14 +107,30 @@ class _DrawerViewState extends State<DrawerView> {
         padding: EdgeInsets.zero,
         children: <Widget>[
           drawerHeader(),
-          listTitle("Season", true, Icon(Mdi.clipboardTextPlay), SeasonPage()),
-          listTitle("Schedule", true, Icon(Mdi.clockTimeSeven), SchedulePage()),
+          listTitle(
+            "Season",
+            true,
+            Icon(Mdi.clipboardTextPlay),
+            RoutersName.seasonRoute,
+          ),
+          listTitle(
+            "Schedule",
+            true,
+            Icon(Mdi.clockTimeSeven),
+            RoutersName.scheduleRoute,
+          ),
           //listTitle("Configurations", true, Icon(Mdi.cog), SchedulePage()),
           Divider(
             height: 10,
             thickness: 2,
           ),
-          listTitleShare("Share us with your friends", true, Icon(Mdi.share)),
+          listTitleShare(
+            "Share us with your friends",
+            true,
+            Icon(
+              Mdi.share,
+            ),
+          ),
           listTitleUrl(
             "About",
             true,
@@ -145,7 +144,6 @@ class _DrawerViewState extends State<DrawerView> {
 
   @override
   Widget build(BuildContext context) {
-    _context = context;
     return drawer();
   }
 }
