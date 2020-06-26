@@ -1,5 +1,7 @@
 import 'package:jikan_api/jikan_api.dart';
 
+final jikan = Jikan();
+
 Future<Iterable> fetchDescriptions(animeId, option) async {
   return await Future.wait([
     getInfo(
@@ -22,7 +24,6 @@ Future<Iterable> fetchDescriptions(animeId, option) async {
 }
 
 Future getInfo(animeId, option) async {
-  var jikan = Jikan();
   var top = option == 1
       ? await jikan.getAnimeInfo(animeId)
       : await jikan.getMangaInfo(animeId);
@@ -30,7 +31,6 @@ Future getInfo(animeId, option) async {
 }
 
 Future getNews(animeId, option) async {
-  var jikan = Jikan();
   if (option == 1) {
     var anime = await jikan.getAnimeNews(animeId);
     return anime;
@@ -41,7 +41,6 @@ Future getNews(animeId, option) async {
 }
 
 Future getCharacters(animeId, option) async {
-  var jikan = Jikan();
   if (option == 1) {
     var anime = await jikan.getAnimeCharactersStaff(animeId);
     return anime.characters;
@@ -52,13 +51,11 @@ Future getCharacters(animeId, option) async {
 }
 
 Future getCharactersDetails(characterId) async {
-  var jikan = Jikan();
   var character = await jikan.getCharacterInfo(characterId);
   return character;
 }
 
 Future getReviews(animeId, option) async {
-  var jikan = Jikan();
   if (option == 1) {
     var anime = await jikan.getAnimeReviews(animeId);
     return anime;

@@ -57,7 +57,7 @@ class _SchedulePageState extends State<SchedulePage> {
               DropdownButton(
                 hint: _selectedWeekDay == null
                     ? Text(
-                        'Choose a day of the week',
+                        'Sunday',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: fontSize,

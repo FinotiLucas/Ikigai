@@ -70,7 +70,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Text(
-                    "Lucas",
+                    "Aliati",
                     style: TextStyle(
                       fontSize: 20,
                       fontFamily: "Lobster",
@@ -78,7 +78,7 @@ class _SplashScreenState extends State<SplashScreen> {
                     ),
                   ),
                   Text(
-                    "Finoti",
+                    "Software",
                     style: TextStyle(
                       fontSize: 20,
                       color: Colors.white,

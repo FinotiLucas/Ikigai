@@ -42,6 +42,7 @@ class AnimesDescriptionState extends State<AnimesDescription> {
       imageUrl: widget.anime.imageUrl,
       score: widget.anime.score,
     );
+    
     await DBProvider.db.newAnime(anime);
     setState(() {
       _isFavorite = true;

@@ -61,6 +61,11 @@ You can download the apk directly through github, in the future we will launch i
   <img src="./assets/screenshots/8.png" width="265" />
 </p>
 
+### 5. To do.
+- Implement MVVM
+- Create dark theme
+- Export the local database to a json file
+
 ## :recycle:  Contribution
 
 Want to contribute? Great!
