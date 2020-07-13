@@ -37,7 +37,11 @@ class _SeasonPageState extends State<SeasonPage> {
       future: _future,
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
-          return myGridView(snapshot.data.anime, option, false);
+          return MyGridView(
+            animes: snapshot.data.anime,
+            option: option,
+            isFavorite: false,
+          );
         } else {
           return Center(
             child: CircularProgressIndicator(),

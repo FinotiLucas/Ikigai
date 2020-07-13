@@ -31,7 +31,11 @@ class _AnimesListPageState extends State<AnimesListPage> {
       future: getTop(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
-          return myGridView(snapshot.data.anime, 1, false);
+          return MyGridView(
+            animes: snapshot.data.anime,
+            option: 1,
+            isFavorite: false,
+          );
         } else {
           return Center(
             child: CircularProgressIndicator(),

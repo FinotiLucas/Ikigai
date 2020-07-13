@@ -53,7 +53,7 @@ class _MainPageState extends State<MainPage> {
             //indicatorColor: transparency,
             tabs: <Widget>[
               _buildTab("Home"),
-              _buildTab("Indications"),
+              _buildTab("Bests"),
               _buildTab("Animes"),
               _buildTab("Mangas"),
             ],

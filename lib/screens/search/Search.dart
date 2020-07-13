@@ -135,8 +135,16 @@ class _SearchPageState extends State<SearchPage> {
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
           return type == 1
-              ? myGridView(snapshot.data[0], type, false)
-              : myGridView(snapshot.data[1], type, false);
+              ? MyGridView(
+                  animes: snapshot.data[0],
+                  option: type,
+                  isFavorite: false,
+                )
+              : MyGridView(
+                  animes: snapshot.data[1],
+                  option: type,
+                  isFavorite: false,
+                );
         } else {
           return Center(
             child: CircularProgressIndicator(),

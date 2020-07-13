@@ -31,7 +31,11 @@ class _MangasListPageState extends State<MangasListPage> {
       future: getTop(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
-          return myGridView(snapshot.data.manga, 2, false);
+          return MyGridView(
+            animes: snapshot.data.manga,
+            option: 2,
+            isFavorite: false,
+          );
         } else {
           return Center(
             child: CircularProgressIndicator(),
@@ -41,14 +45,13 @@ class _MangasListPageState extends State<MangasListPage> {
     );
   }
 
-
   @override
   Widget build(BuildContext context) {
     /*_height = MediaQuery.of(context).size.height;
     _width = MediaQuery.of(context).size.width;*/
     var title = widget.categorie.toString().capitalize();
     return Scaffold(
-      appBar: mainAppBar(context,"$title Mangas"),
+      appBar: mainAppBar(context, "$title Mangas"),
       body: body(),
     );
   }

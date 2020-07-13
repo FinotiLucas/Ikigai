@@ -102,7 +102,11 @@ class _SchedulePageState extends State<SchedulePage> {
           ),
         ),
         Expanded(
-          child: myGridView(data, option, false),
+          child: MyGridView(
+            animes: data,
+            option: option,
+            isFavorite: false,
+          ),
         ),
       ],
     );

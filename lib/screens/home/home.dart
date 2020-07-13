@@ -39,7 +39,11 @@ class _HomePageState extends State<HomePage> {
         if (snapshot.hasData) {
           return snapshot.data.isEmpty
               ? noSearchImage()
-              : myGridView(snapshot.data, option, true);
+              : MyGridView(
+                  animes: snapshot.data,
+                  option: option,
+                  isFavorite: false,
+                );
         } else {
           return Center(
             child: CircularProgressIndicator(),
