@@ -116,6 +116,7 @@ class CharacterDetailsState extends State<CharacterDetails> {
 
   body(characterInfo) {
     return SingleChildScrollView(
+      physics: BouncingScrollPhysics(),
       child: Column(
         children: <Widget>[
           characterImage(characterInfo),

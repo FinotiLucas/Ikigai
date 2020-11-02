@@ -8,7 +8,8 @@ import 'package:ikigai/widgets/mainAppBar.dart';
 import 'package:flutter/material.dart';
 
 class MainDescriptionPage extends StatefulWidget {
-  MainDescriptionPage({Key key, @required this.anime, @required this.option}) : super(key: key);
+  MainDescriptionPage({Key key, @required this.anime, @required this.option})
+      : super(key: key);
 
   final anime;
   final int option;
@@ -50,6 +51,7 @@ class _MainDescriptionPageState extends State<MainDescriptionPage> {
       child: Text(
         text,
         style: TextStyle(color: Colors.white),
+        overflow: TextOverflow.ellipsis,
       ),
     );
   }

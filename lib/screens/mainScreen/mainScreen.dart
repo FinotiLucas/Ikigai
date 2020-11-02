@@ -1,9 +1,11 @@
+import 'package:firebase_admob/firebase_admob.dart';
 import 'package:ikigai/controllers/indicationsController.dart';
 import 'package:ikigai/screens/anime/animeCategories.dart';
 import 'package:ikigai/screens/home/home.dart';
 import 'package:ikigai/screens/indications/indications.dart';
 import 'package:ikigai/screens/manga/mangaCategories.dart';
 import 'package:ikigai/screens/splash/splash.dart';
+import 'package:ikigai/services/adMob.dart';
 import 'package:ikigai/widgets/drawer.dart';
 import 'package:ikigai/widgets/mainAppBar.dart';
 import 'package:flutter/material.dart';
@@ -26,6 +28,16 @@ class _MainPageState extends State<MainPage> {
   void initState() {
     _future = fetchIndications();
     super.initState();
+
+    FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
+    myBanner = buildBannerAd()..load();
+    //myBanner = buildLargeBannerAd()..load();
+  }
+
+  @override
+  void dispose() {
+    myBanner.dispose();
+    super.dispose();
   }
 
   Future initData() async {
@@ -37,6 +49,7 @@ class _MainPageState extends State<MainPage> {
       child: Text(
         text,
         style: TextStyle(color: Colors.white),
+        overflow: TextOverflow.ellipsis,
       ),
     );
   }
@@ -53,7 +66,7 @@ class _MainPageState extends State<MainPage> {
             //indicatorColor: transparency,
             tabs: <Widget>[
               _buildTab("Home"),
-              _buildTab("Bests"),
+              _buildTab("Indications"),
               _buildTab("Animes"),
               _buildTab("Mangas"),
             ],

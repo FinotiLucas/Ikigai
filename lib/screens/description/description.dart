@@ -196,6 +196,7 @@ class AnimesDescriptionState extends State<AnimesDescription> {
 
   body(animeInfo) {
     return SingleChildScrollView(
+      physics: BouncingScrollPhysics(),
       child: Column(
         children: <Widget>[
           animeImage(animeInfo),
